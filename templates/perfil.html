@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link href="{{ url_for('static', filename='img/logo.PNG') }}" rel="icon">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/Profile.css') }}" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>  
+<body>
+    
+
+    <section class="seccion-perfil-usuario">
+        <div class="perfil-usuario-header">
+            <div class="perfil-usuario-portada">
+                <div class="perfil-usuario-avatar">
+                    <img src="{{ img }}" alt="Imagen de perfil" class="img-avatar">
+                </div>                        
+                <button type="button" class="boton-portada boton-extremo-derecho" onclick="confirmarEliminarPerfil()">Eliminar perfil</button>
+              </div>
+        </div>
+        <div class="perfil-usuario-body">
+            <div class="perfil-usuario-bio">
+                <div class="nombre">
+                    <span id="nombre">{{ nombre }}</span>
+                    <i class="bx bx-edit-alt" id="editarNombre" title="Actualizar nombre" onmouseover="mostrarLeyenda()" onmouseout="ocultarLeyenda()" onclick="mostrarCampoEdicion()"></i>
+                </div>
+                
+            <div id="campoEdicionNombre" style="display: none;">
+                <input type="text" id="nuevoNombre" value="{{ nombre }}">
+                <button type="button" onclick="guardarNombre()">Guardar</button>
+                <button type="button" onclick="cancelarEdicion()">Cancelar</button>
+            </div>
+        </div>
+            
+            <div class="perfil-usuario-footer">
+                <ul class="lista-datos">
+                    <li>
+                        <i class='bx bx-envelope'>Correo electrónico: <span id="correo">{{ correo }}</span></i>
+                    </li>
+                </ul>
+            </div>
+            <div class="fondo-oscuro" style="display: none;"></div>
+        </div>
+    </section>
+
+<a href="{{ url_for('Principal') }}" class="back-to-home">
+    <i class='bx bxs-chevrons-left bx-lg bx-fade-left'></i>
+</a>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+

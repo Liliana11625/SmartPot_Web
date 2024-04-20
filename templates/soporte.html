@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Soporte</title>
+  <link href="{{ url_for('static', filename='img/logo.PNG') }}" rel="icon">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<style>
+  /*soporte*/
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Vibur);
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Playfair Display', serif;
+      background-color: #270e0ed7;
+      margin-top: 100px;
+    }
+
+    #header {
+      text-align: center;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    #header h1 {
+      font-size: 2rem;
+      color: #000; 
+      text-align: center;
+      font-family: 'Vibur', cursive;
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+
+    #header p {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #ffffff; 
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      width: 300px;
+      height: 150px;
+      background-color: rgba(238, 238, 238, 0.8);
+      color: rgb(0, 0, 0);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: auto; 
+      margin-right: auto;
+    }
+
+    .card-text {
+      text-align: center;
+    }
+
+    .card-meal-type {
+      font-style: italic;
+    }
+
+    .card-body {
+      margin-top: 10px;
+    }
+
+    /*icono de regreso*/
+    .back-to-home {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        color: #000000; 
+        text-decoration: none;
+        z-index: 9999;
+      }
+      
+      .back-to-home i {
+        color: #000000;
+      }
+
+      @media (max-width: 768px) {
+        body{
+          margin-top: 0;
+        }
+        
+        #header h1 {
+        font-size: 1.5rem; 
+      }
+
+      .container {
+        padding: 10px;
+      }
+
+      .card {
+        width: calc(100% - 20px); 
+        max-width: none; 
+      }
+    }
+  </style>
+
+<body>
+
+<div id="header">
+  <h1>Bienvenido al Soporte Técnico de SmartPot</h1>
+  <p>Ponte en contacto con nosotros</p>
+</div>
+
+<div class="container">
+  <div class="card">
+    <div class="card-text">
+      <p class="card-meal-type">¿Tienes algún problema con tu SmartPot? ¡Estamos aquí para ayudarte!</p>
+    </div>
+    <div class="card-price"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-text"><i class='bx bxl-gmail bx-md'></i>
+      <p class="card-meal-type">Contacto por Correo Electrónico</p>
+      <p class="card-body"> halcorporation40@gmail.com</p>
+    </div>
+    <div class="card-price"></div>
+  </div>
+
+<div class="card">
+  <div class="card-text"><i class='bx bx-phone bx-md'></i>
+    <p class="card-meal-type">Contacto Telefónico</p>
+    <p class="card-body">+1 (123) 456-7890</p>
+  </div>
+  <div class="card-price"></div>
+</div>
+</div>
+<!--
+  <div class="card">
+    <div class="card-text">
+      <h2 class="card-title">Centro de Ayuda</h2>
+      <p class="card-description">Visita nuestro centro de ayuda en línea para encontrar respuestas a tus preguntas frecuentes.</p>
+      <a href="#" class="help-link">Ir al Centro de Ayuda</a>
+    </div>
+  </div>
+</div>
+-->
+<a href="{{ url_for('Principal') }}" class="back-to-home">
+  <i class='bx bxs-chevrons-left bx-lg bx-fade-left'></i>
+</a>
+
+</body>
+</html>

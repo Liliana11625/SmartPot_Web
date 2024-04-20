@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Registro</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="{{ url_for('static', filename='img/logo.PNG') }}" rel="icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@700&display=swap" rel="stylesheet">  
+    <link href="{{ url_for('static', filename='css/General.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <div class="login-form">
+        <h1>Registro</h1>
+            <form action="{{ url_for('registro') }}" method="post" onsubmit="return validarNombre()">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Nombre Completo" name="name" id="name" required pattern="[a-zA-Z\s]+" title="Ingresa un nombre válido (solo letras y espacios)">
+                <i class="fa fa-user"></i>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Correo Electrónico" id="gmail" name="gmail" >
+                <i class="fa fa-envelope"></i>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password" required minlength="8" onfocus="mostrarLeyenda()">
+                <i class="fa fa-lock" id="lockIcon"></i>
+                <i class="fa fa-eye" id="eyeIcon" style="display:none;" onclick="togglePassword()"></i>
+                <div class="password-hint" id="passwordHint">La contraseña debe ser una combinación de 8 caracteres, incluyendo números, letras y caracteres especiales.</div>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Verificar Contraseña" name="verificarContrasena" id="verificarContrasena" >
+                <i class="fa fa-lock" id="lockIcon2"></i>
+                <i class="fa fa-eye" id="eyeIcon2" style="display:none;" onclick="togglePassword2()"></i>
+            </div>
+            <button type="submit" class="log-btn">Registrarse</button>
+            <div class="google-btn-container">
+            <a href="{{ url_for('login') }}" class="log-btn google-btn"><i class="fab fa-google"></i> Registrarse con Google</a>
+            </div>
+        </form>
+    </div>
+    <div class="image-container">
+        <div class="background-message">
+            <h1> Bienvenido a Smart-Pot </h1>
+        </div>
+    </div>
+
+    <a href="{{ url_for('index') }}" class="back-to-home">
+        <i class='bx bxs-chevrons-left bx-lg bx-fade-left'></i>
+    </a>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/contraseña.js') }}"></script>
+</body>
+</html>
+

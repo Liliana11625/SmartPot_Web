@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>SMART-POT</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <link href="{{ url_for('static', filename='img/logo.PNG') }}" rel="icon">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">   
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    
+    <!--Navar Start-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-brown">
+        <div class="container">
+            <a class="navbar-brand">
+                <img src="{{ url_for('static', filename='img/s.svg') }}" alt="Smart Pot Logo" class="logo" >
+            </a>            
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="perfil" class="nav-link">
+                        <i class='bx bx-user-circle bx-sm'></i> Perfil
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="soporte" class="nav-link">
+                        <i class='bx bx-support bx-sm'></i> Soporte Técnico
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" onclick="abrirVentana('ventana-preguntas')" class="nav-link" onclick="">
+                        <i class='bx bx-help-circle bx-sm'></i> Preguntas Frecuentes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="manual.pdf" class="nav-link" target="_blank" download>
+                        <i class='bx bx-cloud-download bx-sm'></i> Descargar Manual
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="confirmarCerrarSesion()">
+                        <i class='bx bx-log-out bx-sm'></i> Cerrar Sesión
+                    </a>
+                </li>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalGraficas">
+                    Ver Gráficas
+                </button>
+                
+            </ul>
+        </div>
+        </div>
+    </nav>
+    <!--Navar End-->
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0" style="margin-top: 50px;">
+        <div id="header-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="{{ url_for('static', filename='img/planta.jpg') }}" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h1 class="display-3 text-white mb-3 d-none d-sm-block">Smart Pot</h1>
+                            <h1 class="display-5 text-white mb-3 d-sm-none">Smart Pot</h1> 
+                            <button id="scrollToCatalogBtn" class="btn btn-lg btn-primary btn-sm-block custom-btn-size" onclick="mostrarCatalogo()">Ir al Catálogo</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="{{ url_for('static', filename='img/planta.jpg') }}" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h1 class="display-3 text-white mb-3 d-none d-sm-block">La mejor maceta que encontrarás</h1>
+                            <h1 class="display-6 text-white mb-3 d-sm-none">La mejor maceta que encontrarás</h1> 
+                            <button id="scrollToCatalogBtn2" class="btn btn-lg btn-primary btn-sm-block custom-btn-size" onclick="mostrarCatalogo()">Ir al Catálogo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                <div class="btn btn-primary rounded" style="width: 45px; height: 45px;">
+                    <span class="carousel-control-prev-icon mb-n2"></span>
+                </div>
+            </a>
+            <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+                <div class="btn btn-primary rounded" style="width: 45px; height: 45px;">
+                    <span class="carousel-control-next-icon mb-n2"></span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+    <!-- Catalogo Start -->
+    <div id="catalogo-section" class="container-fluid bg-light pt-5" style="display: none;">
+        <div class="container-fluid bg-light pt-5">
+            <div class="container py-5">
+                <div class="d-flex flex-column text-center mb-5">
+                    <h4 class="text-secondary mb-3">Catalogo</h4>
+                    <h1 class="display-4 m-0">Gran Variedad de Plantas</h1>
+                </div>
+                <div class="row pb-3">
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card-catalog">
+                            <div class="card-catalog-body">
+                                <h3 class="card-catalog-title">Lengua de Suegra</h3>
+                                <div class="img-container">
+                                    <img src="{{ url_for('static', filename='img/lenguadesuegra.jpg') }}" alt="Imagen" class="img-fluid mb-3">
+                                </div>
+                                <p class="card-catalog-text">Planta suculenta de hojas largas y afiladas, que crece en forma de roseta. Es resistente y fácil de cuidar.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card-catalog">
+                            <div class="card-catalog-body">
+                                <h3 class="card-catalog-title">Anturio Rojo</h3>
+                                <div class="img-container">
+                                    <img src="{{ url_for('static', filename='img/anturioroj.jpg') }}" alt="Imagen" class="img-fluid mb-3">
+                                </div>
+                                <p class="card-catalog-text">Planta de interior apreciada por sus vistosas hojas verdes brillantes y sus llamativas flores rojas en forma de espádice.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card-catalog">
+                            <div class="card-catalog-body">
+                                <h3 class="card-catalog-title">Rosa de desierto</h3>
+                                <div class="img-container">
+                                <img src="{{ url_for('static', filename='img/rosadeldesierto.jpg') }}" alt="Imagen" class="img-fluid mb-3">
+                            </div>
+                                <p class="card-catalog-text">Planta suculenta con un tronco grueso y espinoso y flores de aspecto similar a las rosas en una variedad de colores.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 extra-product-card d-none">
+                        <div class="card-catalog">
+                            <div class="card-catalog-body">
+                                <h3 class="card-catalog-title">Suculenta Echeveria</h3>
+                                <div class="img-container">
+                                <img src="{{ url_for('static', filename='img/suculentaecheveria.jpg') }}" alt="Imagen" class="img-fluid mb-3">
+                            </div>
+                                <p class="card-catalog-text">Suculenta con rosetas de hojas gruesas y carnosas que pueden ser de diversos colores y texturas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 extra-product-card d-none">
+                        <div class="card-catalog">
+                            <div class="card-catalog-body">
+                                <h3 class="card-catalog-title">Arbol de la abundacia</h3>
+                                <div class="img-container">
+                                <img src="{{ url_for('static', filename='img/arboldeabundancia.jpg') }}" alt="Imagen" class="img-fluid mb-3">
+                            </div>
+                                <p class="card-catalog-text">Arbol de origen tropical con un tronco trenzado y hojas verdes brillantes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 extra-product-card d-none">
+                        <div class="card-catalog">
+                            <div class="card-catalog-body">
+                                <h3 class="card-catalog-title">Ruda</h3>
+                                <div class="img-container">
+                                <img src="{{ url_for('static', filename='img/ruda.jpg') }}" alt="Imagen" class="img-fluid mb-3">
+                            </div>
+                                <p class="card-catalog-text">Planta aromática de hojas verde grisáceas y flores amarillas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 extra-product-card d-none">
+                        <div class="card-catalog">
+                            <div class="card-catalog-body">
+                                <h3 class="card-catalog-title">Cactus de ordenador</h3>
+                                <div class="img-container">
+                                <img src="{{ url_for('static', filename='img/cactusdeordenador.png') }}" alt="Imagen" class="img-fluid mb-3">
+                            </div>
+                                <p class="card-catalog-text">Cactus columnar muy ramificado.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 extra-product-card d-none">
+                        <div class="card-catalog">
+                            <div class="card-catalog-body">
+                                <h3 class="card-catalog-title">Geranio Malvon</h3>
+                                <div class="img-container">
+                                <img src="{{ url_for('static', filename='img/geraniomalvon.jpg') }}" alt="Imagen" class="img-fluid mb-3">
+                            </div>
+                                <p class="card-catalog-text">Plantas perennes con hojas peludas y flores en racimos de colores variados.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 extra-product-card d-none">
+                        <div class="card-catalog">
+                            <div class="card-catalog-body">
+                                <h3 class="card-catalog-title">Tulipan Holandes</h3>
+                                <div class="img-container">
+                                <img src="{{ url_for('static', filename='img/tulipanholandes.png') }}" alt="Imagen" class="img-fluid mb-3">
+                            </div>
+                                <p class="card-catalog-text">Planta bulbosa conocida por sus flores grandes y vistosas en una amplia gama de colores.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 extra-product-card d-none">
+                        <div class="card-catalog">
+                            <div class="card-catalog-body">
+                                <h3 class="card-catalog-title">Menta</h3>
+                                <div class="img-container">
+                                <img src="{{ url_for('static', filename='img/menta.png') }}"  alt="Imagen" class="img-fluid mb-3">
+                            </div>
+                                <p class="card-catalog-text">Planta aromática con hojas dentadas y fragantes, tiene un aroma y sabor refrescante.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 extra-product-card d-none">
+                        <div class="card-catalog">
+                            <div class="card-catalog-body">
+                                <h3 class="card-catalog-title">Hierbabuena</h3>
+                                <div class="img-container">
+                                <img src="{{ url_for('static', filename='img/hierbabuena.jpg') }}" alt="Imagen" class="img-fluid mb-3">
+                            </div>
+                                <p class="card-catalog-text">Planta aromática con hojas anchas y un sabor ligeramente fuerte.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 extra-product-card d-none">
+                        <div class="card-catalog">
+                            <div class="card-catalog-body">
+                                <h3 class="card-catalog-title">Euphorbia trigona</h3>
+                                <div class="img-container">
+                                <img src="{{ url_for('static', filename='img/euphorbiatrigona.jpg') }}" alt="Imagen" class="img-fluid mb-3">
+                            </div>
+                                <p class="card-catalog-text">Planta suculenta de tallos erectos divididos en segmentos de 15-25 cm separados por constricciones.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 extra-product-card d-none">
+                        <div class="card-catalog">
+                            <div class="card-catalog-body">
+                                <h3 class="card-catalog-title">Kalanchoe Blossfeldiana</h3>
+                                <div class="img-container">
+                                <img src="{{ url_for('static', filename='img/kalanchoeblossfeldiana.jpg') }}" alt="Imagen" class="img-fluid mb-3">
+                            </div>
+                                <p class="card-catalog-text">Planta suculenta con hojas carnosas y flores en racimos de colores brillantes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 extra-product-card d-none">
+                        <div class="card-catalog">
+                            <div class="card-catalog-body">
+                                <h3 class="card-catalog-title">Poto</h3>
+                                <div class="img-container">
+                                <img src="{{ url_for('static', filename='img/poto.jpg') }}" alt="Imagen" class="img-fluid mb-3">
+                            </div>
+                                <p class="card-catalog-text">Planta trepadora de interior con hojas en forma de corazón, popular por su resistencia y fácil cuidado.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 mb-4 extra-product-card d-none">
+                        <div class="card-catalog">
+                            <div class="card-catalog-body">
+                                <h3 class="card-catalog-title">Planta del rosario</h3>
+                                <div class="img-container">
+                                <img src="{{ url_for('static', filename='img/plantadelrosario.jpg') }}" alt="Imagen" class="img-fluid mb-3">
+                            </div>
+                                <p class="card-catalog-text">Planta suculenta colgante con hojas en forma de cuentas o perlas que crecen en tallos largos.</p>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+                <div class="col-12 text-center">
+                    <button id="showMoreBtn" class="btn btn-primary">Más</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Catalogo End -->
+     
+    <!-- Luz -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100 rounded " src="{{ url_for('static', filename='img/img2.jpg') }}" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="border-start border-5 border-primary ps-5 mb-5">
+                        <h6 class="text-primary text-uppercase">Intensidad de la Luz</h6>
+                        <h1 class="display-5 text-uppercase mb-0">Sensor de Luminosidad</h1>
+                    </div>
+                    <h4 class="text-body mb-4">Este sensor te ayuda ajustar la luz que necesita tu planta.</h4>
+                    <div class="bg-light p-4">
+                        <ul class="nav nav-pills justify-content-between mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item col-12 text-center" role="presentation">
+                                <button class="nav-link text-uppercase w-100 active" id="pills-1-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-1" type="button" role="tab" aria-controls="pills-1"
+                                    aria-selected="true">Donde lo Encuentro</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
+                                <p class="mb-0"> Lo encuentras en el menú de la App Movil, en el apartado de "Luz", estara una ventana con tus diferentes plantas, si solo tienes una solo esa aparecera, puedes ver como va la luz de tu planta, si tu planta tiene alguna defienciencia en auntomaico el sistema te envia una notificación, para que mueva la planta a un lugar con mejores condiciones.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Luz End -->
+    
+    <!-- Temperatura y humedad -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+                <h6 class="text-primary text-uppercase">Monitoreo</h6>
+                <h1 class="display-5 text-uppercase mb-0">Sensores de temperatura y humedad</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="blog-item">
+                        <div class="row g-0 bg-light overflow-hidden">
+                            <div class="col-12 col-sm-5 h-100">
+                                <img class="img-fluid h-100" src="{{ url_for('static', filename='img/img2.jpg') }}"src="img/img3.jpg" style="object-fit: cover;">
+                            </div>
+                            <div class="col-12 col-sm-7 h-100 d-flex flex-column justify-content-center">
+                                <div class="p-4">
+                                    <h5 class="text-uppercase mb-3">Humedad</h5>
+                                    <p>Lo encuentras en el menú, en la pagina principal de la Movil, hay un resumen genral de como va la humedad de la planta. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="blog-item">
+                        <div class="row g-0 bg-light overflow-hidden">
+                            <div class="col-12 col-sm-5 h-100">
+                                <img class="img-fluid h-100" src="{{ url_for('static', filename='img/img4.jpg') }}" style="object-fit: cover;">
+                            </div>
+                            <div class="col-12 col-sm-7 h-100 d-flex flex-column justify-content-center">
+                                <div class="p-4">
+                                    <h5 class="text-uppercase mb-3">Temperatura</h5>
+                                    <p>Sensor encargado de cuidar la temperatura de tu plnata.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Temperatura y humedad End -->
+
+    <!-- Ventana Flotante para Preguntas Frecuentes -->
+    <div id="ventana-preguntas" class="ventana-flotante">
+        <div class="ventana-contenido">
+            <h2>Preguntas Frecuentes</h2>
+            <p>Encuentra respuestas a las preguntas más comunes sobre nuestro producto.</p>
+            <button onclick="cerrarVentana('ventana-preguntas')">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Carrusel de Comentarios Start -->
+    <div class="container-fluid bg-light my-5 p-0 py-5">
+        <div class="container p-0 py-5">
+            <div class="d-flex flex-column text-center mb-5">
+                <h4 class="text-secondary mb-3">Opiniones</h4>
+                <h1 class="display-4 m-0">Comentarios y Calificaciones</h1>
+            </div>
+            <div id="commentsCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" id="commentsContainer">
+                </div>
+                <a class="carousel-control-prev" href="#commentsCarousel" role="button" data-slide="prev">
+                    <div class="btn btn-primary rounded" style="width: 45px; height: 45px;" class="carousel-control-prev-icon" aria-hidden="true">
+                        <span class="carousel-control-prev-icon mb-n2"></span>
+                    </div>
+                </a>
+                <a class="carousel-control-next" href="#commentsCarousel" role="button" data-slide="next">
+                    <div class="btn btn-primary rounded" style="width: 45px; height: 45px;" class="carousel-control-next-icon" aria-hidden="true">
+                        <span class="carousel-control-next-icon mb-n2"></span>
+                    </div>
+                </a>
+            </div>
+            <div id="openCommentForm" class="conte">
+                <i id="icono" class='bx bx-comment-add bx-lg'></i>
+                <span>Añadir un comentario</span>
+            </div>
+        </div>
+    </div>        
+    <!-- Carrusel de Comentarios End -->
+
+    <!--Modal calificaciones -->
+    <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="commentModalLabel">Ayudanos dejando un comentario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="commentForm">
+                        <div class="form-group">
+                            <label for="commentTitle">Título:</label>
+                            <input type="text" class="form-control" id="commentTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="commentContent">Comentario:</label>
+                            <textarea class="form-control" id="commentContent" rows="3" required></textarea>
+                        </div>
+                        <hr>
+                        <div class="line1"></div>
+                        <div class="form-group text-center">
+                        <label for="commentContent">Ayudanos calificando la aplicaciòn</label>
+                        <p class="clasificacion mx-auto"> 
+                            <input id="radio1" type="radio" name="estrellas" value="5" required><!--
+                            --><label class="star1" for="radio1">★</label><!--
+                            --><input id="radio2" type="radio" name="estrellas" value="4" required><!--
+                            --><label class="star1" for="radio2">★</label><!--
+                            --><input id="radio3" type="radio" name="estrellas" value="3" required><!--
+                            --><label class="star1" for="radio3">★</label><!--
+                            --><input id="radio4" type="radio" name="estrellas" value="2" required><!--
+                            --><label class="star1" for="radio4">★</label><!--
+                            --><input id="radio5" type="radio" name="estrellas" value="1" required><!--
+                            --><label class="star1" for="radio5">★</label>
+                          </p>
+                        </div>
+                        <button type="submit" class="btn btn-primary mx-auto d-block">Enviar Comentario</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--modal calificacione end-->
+
+    <!-- Botón de volver arriba -->
+    <button id="scrollToTopBtn" class="btn btn-lg btn-primary back-to-top" style="display: none;"><i class='bx bxs-chevrons-up bx-sm'></i></button>
+
+    <!--Graficas-->
+    <div class="modal fade" id="modalGraficas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Gráficas de Satisfacción</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <canvas id="graficaSatisfaccionModal"></canvas>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Graficas end -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/js/star-rating.min.js"></script>
+    
+</body>
+</html>

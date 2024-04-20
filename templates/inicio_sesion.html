@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Inicio de sesión</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="{{ url_for('static', filename='img/logo.PNG') }}" rel="icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@700&display=swap" rel="stylesheet">  
+    <link href="{{ url_for('static', filename='css/General.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+</head>
+
+<body>
+    <div class="login-form">
+        <h1>Smart-Pot</h1>
+        <form action="{{ url_for('inicio_sesion') }}" method="post" id="loginForm">
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Correo Electrónico" name="gmail" id="gmail" required>
+                <i class="fa fa-envelope"></i>
+            </div>
+            <div class="form-group log-status">
+                <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password" required>
+                <i class="fa fa-lock" id="lockIcon"></i>
+                <i class="fa fa-eye" id="eyeIcon" style="display:none;" onclick="togglePassword()"></i>
+            </div>
+            <button type="submit" class="log-btn" id="loginForm">Iniciar Sesión</button>
+            <div class="google-btn-container">
+            <a href="{{ url_for('login') }}" class="log-btn google-btn"><i class="fab fa-google"></i> Iniciar Sesión con Google</a>
+            </div>
+        </form>
+    </div>
+    <div class="image-container">
+        <img src="../static/img/img1.jpg" alt="Background Image" class="background-image">
+    </div>
+
+    <a href="{{ url_for('index') }}" class="back-to-home">
+        <i class='bx bxs-chevrons-left bx-lg bx-fade-left'></i>
+    </a>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/contraseña.js') }}"></script>
+</body>
+
+</html>
+
